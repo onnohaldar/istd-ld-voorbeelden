@@ -17,8 +17,8 @@
   "scripts": {
     "run": "fuseki-service-cli run",
     "start": "fuseki-service-cli start && pm2 l",
-    "stop": "fuseki-cli stop",
-    "restart": "fuseki-cli restart",
+    "stop": "fuseki-service-cli stop && pm2 l",
+    "restart": "fuseki-service-cli restart && pm2 l",
     "add:iwvggz:dataset": "fuseki-cli datasets -add $npm_package_tripleStore_config_iWvggz",
     "remove:iwvggz:dataset": "fuseki-cli datasets -remove iWvggz",
     "prep:iwvggz": "$npm_package_tsNode insite-linked-data/insite-data-prep.ts \"pub-examples/iWvggz 1.0\"",
