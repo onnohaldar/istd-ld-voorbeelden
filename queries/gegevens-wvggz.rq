@@ -1,0 +1,18 @@
+PREFIX dcterms: <http://purl.org/dc/terms#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX onto: <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#>
+PREFIX : <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/data/insite-iwvggz-data.ttl#>
+
+SELECT ?viewType ?viewLabel ?objectType ?objectLabel
+WHERE {
+  ?model rdfs:label "Gegevens WvGGZ"@nl .
+  ?model onto:hasView ?view .
+  ?view a ?viewType .
+  ?view rdfs:label ?viewLabel .
+  ?object onto:onView ?view .
+  ?object a ?objectType .
+  ?object rdfs:label ?objectLabel .
+}
+ORDER BY ?model ?view ?objectType

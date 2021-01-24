@@ -1,0 +1,59 @@
+{
+  "name": "istd-ld-tools",
+  "version": "0.0.1",
+  "description": "iStandaard tools to reuse publication data as linked data",
+  "main": "index.ts",
+  "tsNode": "ts-node -P ./ts-node-config.json",
+  "tripleStore": {
+    "server": "http://localhost:3030",
+    "config": {
+      "iWvggz": "triple-store/config/iwvggz.ttl"
+    }
+  },
+  "tripleData": {
+    "bizzOntology": "triples-data/onto/bizz-ontology.ttl",
+    "iWvggzData": "triple-data/data/insite-iwvggz-data.ttl"
+  },
+  "scripts": {
+    "start": "fuseki-cli run",
+    "stop": "fuseki-cli stop",
+    "restart": "fuseki-cli restart",
+    "add:iwvggz:dataset": "fuseki-cli datasets -add $npm_package_tripleStore_config_iWvggz",
+    "remove:iwvggz:dataset": "fuseki-cli datasets -remove iWvggz",
+    "prep:iwvggz": "$npm_package_tsNode insite-linked-data/insite-data-prep.ts \"pub-examples/iWvggz 1.0\"",
+    "export:iwvggz": "$npm_package_tsNode insite-linked-data/export-insite-data-as-tripples.ts \"pub-examples/iWvggz 1.0\" \"insite-iwvggz-data.ttl\"",
+    "put:iWvggz:ontology": "fuseki-cli put iWvggz $npm_package_tripples_bizzOntology",
+    "post:iWvggz:ontology": "fuseki-cli post iWvggz $npm_package_tripples_bizzOntology",
+    "post:iwvggz:data": "fuseki-cli post iWvggz $npm_package_tripples_iWvggzData",
+    "test": "$npm_package_tsNode spikes/test.ts \"pub-examples/iWvggz 1.0\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onnohaldar/istd-ld-tools.git"
+  },
+  "keywords": [
+    "iStandaarden",
+    "typescript"
+  ],
+  "author": "Onno Haldar <onno@haldar.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onnohaldar/istd-ld-tools/issues"
+  },
+  "homepage": "https://github.com/onnohaldar/istd-ld-tools#readme",
+  "dependencies": {
+    "@dgwnu/fuseki-service": "git+https://github.com/dgwnu/fuseki-service.git",
+    "@dgwnu/fuseki-cli": "git+https://github.com/dgwnu/fuseki-cli.git",
+    "@types/n3": "^1.4.4",
+    "@types/node": "^14.14.22",
+    "bluebird": "^3.7.2",
+    "camel-case": "^4.1.2",
+    "mkdirp": "^1.0.4",
+    "n3": "^1.8.0",
+    "rdflib-ts": "^1.2.58",
+    "rxjs": "^6.6.3",
+    "ts-node": "^9.0.0",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
+  }
+}

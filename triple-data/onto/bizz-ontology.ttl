@@ -1,0 +1,96 @@
+@prefix : <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix onto: <https://github.com/onnohaldar/bizz-ts/blob/main/tripples/onto/bizz-ontology.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#> .
+
+<https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#> rdf:type owl:Ontology ;
+                                                                                           owl:versionIRI <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#0.0.1> ;
+                                                                                           rdfs:comment "Deze ontologie bevat de beschrijving van data vanuit een proof of concept hoe bizz design insite data herbruikbaar te maken als linked data. Alle basis concepten worden beschreven zoals deze binnen de iStandaarden worden toegepast. Dit is geen tool voor productiedoeleinden maar een beperkte versie ter evaluatie!"@nl .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#hasRelation
+:hasRelation rdf:type owl:ObjectProperty ;
+             rdfs:domain :ObjectType ;
+             rdfs:range :ObjectType ;
+             rdfs:comment """Relaties  tuissen ObjectTypen worden in Bizz Design beschreven met het via type relatie.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden waaronder \"all_objects_relations.js\". Daarin staat een \"var objectRelations\" met waarin de onderlinge relaties tussen een Object en 1 of meerdere anfdere Objecten staan."""@nl .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#hasView
+:hasView rdf:type owl:ObjectProperty ;
+         rdfs:domain :ModelType ;
+         rdfs:range :ViewType ;
+         rdfs:comment """De relatie tussen een Model en een onderliggende View in BizzDesign.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden waaronder \"models_data.js\" met daarin de \"views\" onder elk gepubliceerde model. Daarin staat een \"var insite_models\" met een referentie naar 0 of meer Views per Model."""@nl .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#onView
+:onView rdf:type owl:ObjectProperty ;
+        rdfs:domain :ObjectType ;
+        rdfs:range :ViewType ;
+        rdfs:comment """Welke View(s) een Object is geplaatst.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden waaronder \"all_objects_on_views.js\". Daarin staat een \"var objectsOnViews\" waarin per Object 1 of meer View(s) staan waar deze op is geplaatst."""@nl .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#insiteId
+:insiteId rdf:type owl:DatatypeProperty .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#modelId
+:modelId rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :insiteId ;
+         rdfs:domain :ModelType .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#objectId
+:objectId rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :insiteId ;
+          rdfs:domain :ObjectType .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#viewId
+:viewId rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :insiteId ;
+        rdfs:domain :ViewType .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#ModelType
+:ModelType rdf:type owl:Class ;
+           rdfs:comment """Class ModelType is een typering voor een BizzDesign Model op hoofdniveau.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden waaronder \"models_data.js\". Daarin staat een \"var insite_models\" met de \"naam\" van een Model op hoofdniveau."""@nl .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#ObjectType
+:ObjectType rdf:type owl:Class ;
+            rdfs:comment """Class ObjectType is een typering voor een Object dat vanuit BizzDesign is geexporteerd.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden volgens template \"all_data_[index].js\" waarbij [index] staat voor index van 1 of meerdere Javascripts met Objecten. In elk javascript een \"var objectData\" met de gegevens van gepubliceerde Objecten."""@nl .
+
+
+###  https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#ViewType
+:ViewType rdf:type owl:Class ;
+          rdfs:comment """Class ViewType is een typering voor een View die vanuit BizzDesign is geexporteerd.
+
+Elke BizzDesign Insite publicatie bevat een data-folder met daarin meerdere javascript-bestanden volgens template \"view_[viewId]_data.js\" waarbij [viewId] staat voor het Insite publicatie Id voor de View (1  Javascript per View). Daarin staat \"var objectData\" met de gegevens van de View (waaronder \"data.type\")."""@nl .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

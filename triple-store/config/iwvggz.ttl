@@ -1,0 +1,82 @@
+#
+# Example with TDB2 and Inference Reasoner
+#
+@prefix :      <http://base/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tdb2:  <http://jena.apache.org/2016/tdb#> .
+@prefix ja:    <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+
+tdb2:DatasetTDB  rdfs:subClassOf  ja:RDFDataset .
+
+ja:DatasetTxnMem  rdfs:subClassOf  ja:RDFDataset .
+
+<http://jena.hpl.hp.com/2008/tdb#DatasetTDB>
+        rdfs:subClassOf  ja:RDFDataset .
+
+<http://jena.hpl.hp.com/2008/tdb#GraphTDB>
+        rdfs:subClassOf  ja:Model .
+
+tdb2:GraphTDB2  rdfs:subClassOf  ja:Model .
+
+ja:MemoryDataset  rdfs:subClassOf  ja:RDFDataset .
+
+ja:RDFDatasetZero  rdfs:subClassOf  ja:RDFDataset .
+
+<http://jena.apache.org/text#TextDataset>
+        rdfs:subClassOf  ja:RDFDataset .
+
+# SERVICE
+:service_tdb_all  a                   fuseki:Service ;
+        rdfs:label                    "TDB2 iWvggz" ;
+        fuseki:dataset                :dataset ;
+        fuseki:name                   "iWvggz" ;
+        fuseki:serviceQuery           "query" , "" , "sparql" ;
+        fuseki:serviceReadGraphStore  "get" ;
+        fuseki:serviceReadQuads       "" ;
+        fuseki:serviceReadWriteGraphStore
+                "data" ;
+        fuseki:serviceReadWriteQuads  "" ;
+        fuseki:serviceUpdate          "" , "update" ;
+        fuseki:serviceUpload          "upload" .
+
+# DATASET for the service
+:dataset  rdf:type ja:RDFDataset ;
+    rdfs:label "iWvggz" ;
+    ja:defaultGraph :inference .
+
+# MODEL for dataset
+:inference a ja:InfModel ;
+     ja:baseModel :tdbGraph ;
+     ja:reasoner [
+        # RDFS Rule Reasoner
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>
+        #DISABLED Full OWL Reasoner
+        #ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
+        #DISABLED Mini OWL Reasoner
+        #ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLMiniFBRuleReasoner>
+        #DISABLED Micro OWL Reasoner
+        #ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLMicroFBRuleReasoner>
+     ] .
+
+
+# Graph for the default Model
+:tdbGraph rdf:type tdb2:GraphTDB2 ;
+    tdb2:dataset :tdb_dataset_readwrite .
+
+# Dataset for the Graph
+:tdb_dataset_readwrite
+        a tdb2:DatasetTDB2 ;
+        tdb2:unionDefaultGraph false ; 
+        #if you want all data to available in the default graph
+        #without 'FROM-NAMing them' in the SPARQL query
+        tdb2:location  "/usr/local/var/fuseki/databases/fooddata" .
+
+tdb2:GraphTDB  rdfs:subClassOf  ja:Model .
+
+ja:RDFDatasetOne  rdfs:subClassOf  ja:RDFDataset .
+
+ja:RDFDatasetSink  rdfs:subClassOf  ja:RDFDataset .
+
+tdb2:DatasetTDB2  rdfs:subClassOf  ja:RDFDataset .
