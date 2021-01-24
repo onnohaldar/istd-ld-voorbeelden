@@ -1,7 +1,7 @@
 {
-  "name": "istd-ld-tools",
-  "version": "0.0.1",
-  "description": "iStandaard tools to reuse publication data as linked data",
+  "name": "istd-ld-voorbeelden",
+  "version": "0.1.0",
+  "description": "iStandaarden Linked Data voorbeelden",
   "main": "index.ts",
   "tsNode": "ts-node -P ./ts-node-config.json",
   "tripleStore": {
