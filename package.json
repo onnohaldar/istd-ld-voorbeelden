@@ -15,7 +15,8 @@
     "iWvggzData": "triple-data/data/insite-iwvggz-data.ttl"
   },
   "scripts": {
-    "start": "fuseki-cli run",
+    "run": "fuseki-service-cli run",
+    "start": "fuseki-service-cli start && pm2 l",
     "stop": "fuseki-cli stop",
     "restart": "fuseki-cli restart",
     "add:iwvggz:dataset": "fuseki-cli datasets -add $npm_package_tripleStore_config_iWvggz",
