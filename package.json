@@ -11,7 +11,7 @@
     }
   },
   "tripleData": {
-    "bizzOntology": "triples-data/onto/bizz-ontology.ttl",
+    "bizzOntology": "triple-data/onto/bizz-ontology.ttl",
     "iWvggzData": "triple-data/data/insite-iwvggz-data.ttl"
   },
   "scripts": {
@@ -23,9 +23,9 @@
     "remove:iwvggz:dataset": "fuseki-cli datasets -remove iWvggz",
     "prep:iwvggz": "$npm_package_tsNode insite-linked-data/insite-data-prep.ts \"pub-examples/iWvggz 1.0\"",
     "export:iwvggz": "$npm_package_tsNode insite-linked-data/export-insite-data-as-tripples.ts \"pub-examples/iWvggz 1.0\" \"insite-iwvggz-data.ttl\"",
-    "put:iWvggz:ontology": "fuseki-cli put iWvggz $npm_package_tripples_bizzOntology",
-    "post:iWvggz:ontology": "fuseki-cli post iWvggz $npm_package_tripples_bizzOntology",
-    "post:iwvggz:data": "fuseki-cli post iWvggz $npm_package_tripples_iWvggzData",
+    "put:iWvggz:ontology": "fuseki-cli put iWvggz $npm_package_tripleData_bizzOntology",
+    "post:iWvggz:ontology": "fuseki-cli post iWvggz $npm_package_tripledata_bizzOntology",
+    "post:iwvggz:data": "fuseki-cli post iWvggz $npm_package_tripleData_iWvggzData",
     "test": "$npm_package_tsNode spikes/test.ts \"pub-examples/iWvggz 1.0\""
   },
   "repository": {
