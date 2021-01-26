@@ -1,11 +1,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix onto: <https://github.com/onnohaldar/ist-ld-tools/blob/master/triple-data/onto/bizz-ontology.ttl#>.
-@prefix data: <https://github.com/onnohaldar/ist-ld-tools/blob/master/triple-data/data/insite-iwvggz-data.ttl#>.
+@prefix onto: <https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/onto/bizz-ontology.ttl#>.
+@prefix data: <https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/data/insite-iwvggz-data.ttl#>.
 
-<https://github.com/onnohaldar/ist-ld-tools/blob/master/triple-data/data/insite-iwvggz-data.ttl#> a owl:Ontology;
-    owl:imports <https://github.com/onnohaldar/ist-ld-tools/blob/master/triple-data/onto/bizz-ontology.ttl#>.
+<https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/data/insite-iwvggz-data.ttl#> a owl:Ontology;
+    owl:imports <https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/onto/bizz-ontology.ttl#>.
 data:hasToegekendAan a owl:Class;
     rdfs:subClass onto:hasRelation.
 data:hasBenaderdDoor a owl:Class;

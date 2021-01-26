@@ -2,8 +2,8 @@ PREFIX dcterms: <http://purl.org/dc/terms#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX onto: <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/onto/bizz-ontology.ttl#>
-PREFIX : <https://github.com/onnohaldar/ist-ld-tools/blob/master/tripples/data/insite-iwvggz-data.ttl#>
+PREFIX onto: <https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/onto/bizz-ontology.ttl#>
+PREFIX : <https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/triple-data/data/insite-iwvggz-data.ttl#>
 
 SELECT ?model ?modelLabel
 WHERE {

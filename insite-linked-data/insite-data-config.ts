@@ -10,12 +10,13 @@ import { existsSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
 import { argv } from 'process';
 import { NamespaceManagerInstance, NTriple, IRI } from 'rdflib-ts';
+//import npm from 'npm';
 
 /**
  * dataPath bevat alle gegevens over de publicatie in javascript en is dus de bron voor hergebruik in typescript
  * toepassingen zoals deze
  */
-const baseUrl = 'https://github.com/onnohaldar/ist-ld-tools/blob/master/';
+const baseUrl = 'https://github.com/onnohaldar/ist-ld-voorbeelden/blob/master/';
 const insiteDataFolder = 'data';
 const insiteDataExportsFolder = 'insite-data-exports';
 const triplesFolder = 'triple-data';
