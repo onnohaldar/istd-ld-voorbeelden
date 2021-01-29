@@ -43,9 +43,9 @@ export function initAppendFile(fileToInit: string) {
 }
 
 /**
- * Copy NTripple format trippels to NQuad format array
- * @param tripplesSrc Tripples source
- * @param quadsDest Quads destination
+ * Register NTripple format trippels to Export
+ * @param tripples Tripples source
+ * @param tripplesRegister Tripples register
  */
 export function registerTripples(tripples: NTriple[], tripplesRegister: NTriple[]) {
 
@@ -108,6 +108,11 @@ function formatInsiteType(insiteType: string, capitilize: boolean = true) {
     return formatedInsiteType;
 }
 
+/**
+ * Create a Data Node IRI from Prefix and Id
+ * @param dataNodePrefix Prefix for Data Node IRI Relative value
+ * @param dataId Id to make Data Node relative value Unique
+ */
 export function createDataNode(dataNodePrefix: string, dataId: string | number = '') {
    return new IRI(getDataNameSpacePrefix() + ':' + dataNodePrefix + dataId);
 }
@@ -133,7 +138,7 @@ export function registerDataClassType(dataClassTypeIri: IRI, dataClassTypes: str
 }
 
 /**
- * Insert registered subClass data types for ontology class type into tripple list
+ * Insert registered subClass data types for ontology class type on top of the tripple list
  * @param ontoClassType Ontology class type
  * @param dataClassTypes List with registered data subClass types
  * @param tripples tripple array list
